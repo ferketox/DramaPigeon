@@ -6,6 +6,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('messageForm');
     const confirmation = document.getElementById('confirmation');
     const sendAnotherBtn = document.getElementById('sendAnother');
+    const anonymousSelect = document.getElementById('anonymous');
+    const nameField = document.getElementById('nameField');
+    const userNameInput = document.getElementById('userName');
+    
+    // Handle anonymous/name selection
+    anonymousSelect.addEventListener('change', function() {
+        if (this.value === 'include-name') {
+            nameField.classList.remove('hidden');
+            userNameInput.required = true;
+        } else {
+            nameField.classList.add('hidden');
+            userNameInput.required = false;
+            userNameInput.value = ''; // Clear the name field
+        }
+    });
     
     // Handle form submission
     form.addEventListener('submit', function(e) {
@@ -17,12 +32,19 @@ document.addEventListener('DOMContentLoaded', function() {
             email: formData.get('email'),
             instagram: formData.get('instagram'),
             message: formData.get('message'),
-            anonymous: formData.get('anonymous')
+            anonymous: formData.get('anonymous'),
+            userName: formData.get('userName') || ''
         };
         
         // Basic validation
         if (!data.email || !data.instagram || !data.message) {
             alert('Please fill in all required fields.');
+            return;
+        }
+        
+        // Check if name is required when "include-name" is selected
+        if (data.anonymous === 'include-name' && !data.userName.trim()) {
+            alert('Please enter your name or select "Stay Anonymous".');
             return;
         }
         
@@ -50,12 +72,13 @@ document.addEventListener('DOMContentLoaded', function() {
             instagram_username: data.instagram,
             message_content: data.message,
             identity_preference: data.anonymous === 'anonymous' ? 'Stay Anonymous' : 'Include Name',
+            user_name: data.userName || 'N/A',
             submission_date: new Date().toLocaleString(),
             to_email: 'ferketox@gmail.com' // Replace with your email
         };
         
         // Send email using EmailJS
-        emailjs.send('service_delqyd5', 'template_ybulsq8', templateParams)
+        emailjs.send('service_delqyd5', 'template_fxbhhb9', templateParams)
             .then(function(response) {
                 console.log('Email sent successfully:', response);
                 showConfirmation();
