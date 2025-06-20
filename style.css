@@ -183,6 +183,77 @@ body {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
+/* Footer Styles */
+.footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-tagline {
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-item {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.footer-copy {
+    color: #666;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .logo {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .postman-hat {
+        font-size: 1.6rem;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+    }
+    
+    .message-form {
+        padding: 1.5rem;
+    }
+    
+    .footer-links {
+        gap: 1rem;
+    }
+    
+    .footer-item {
+        font-size: 0.8rem;
+    }
+}
+
 @media (max-width: 640px) {
     .container {
         padding: 1rem;
