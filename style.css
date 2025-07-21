@@ -52,6 +52,13 @@ body {
 }
 
 .price {
+    text-decoration: line-through;
+    color: #888;
+    font-weight: 400;
+    text-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
+}
+
+.free-offer {
     color: #fff;
     font-weight: 600;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
